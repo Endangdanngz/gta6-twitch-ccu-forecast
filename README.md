@@ -1,19 +1,12 @@
-# GTA VI Twitch CCU forecast — make.fun entry
+# gta6-twitch-ccu-forecast
+
+[![make.fun · gta6-twitch-ccu-forecast-01](https://make.fun/badge/gta6-twitch-ccu-forecast-01.svg)](https://make.fun/bounty/gta6-twitch-ccu-forecast-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-twitch-ccu-forecast-01)
+[![rank](https://make.fun/badge/gta6-twitch-ccu-forecast-01/Endangdanngz/gta6-twitch-ccu-forecast/rank.svg)](https://make.fun/bounty/gta6-twitch-ccu-forecast-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-twitch-ccu-forecast-01)
+[![reward](https://make.fun/badge/gta6-twitch-ccu-forecast-01/Endangdanngz/gta6-twitch-ccu-forecast/reward.svg)](https://make.fun/bounty/gta6-twitch-ccu-forecast-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-twitch-ccu-forecast-01)
 
 Forecasts a game launch day's Twitch category viewers for hours 2–24 of
 the release day (UTC), five quantiles (0.05, 0.25, 0.5, 0.75, 0.95) per
 hour, scored by pinball loss on the log scale.
-
-## Run
-
-```
-MAKEFUN_INPUT_DIR=input MAKEFUN_OUTPUT_DIR=out python3 main.py
-```
-
-Reads every `*.in` case file (schema `makefun/twitch-ccu-case/v1`) and
-writes one `<id>.out` per case. Python 3.13, standard library only, no
-network, deterministic (same input → byte-identical output), far under
-the 8 s per-case limit.
 
 ## Model
 
@@ -36,4 +29,19 @@ Model and constants were selected by a leave-one-out backtest over the
 forecast from the others, scored with the exact competition formula):
 chosen model 0.398 mean pinball loss vs 0.930 for the house-baseline
 formula and 1.142 for a flat forecast on the same pseudo-cases, with
-90% coverage of 0.890.
+90% coverage of 0.890. See BACKTEST.md for the full report.
+
+## Run it
+
+```sh
+MAKEFUN_INPUT_DIR=input MAKEFUN_OUTPUT_DIR=out python3 main.py
+```
+
+Reads every `*.in` case file (schema `makefun/twitch-ccu-case/v1`) and
+writes one `<id>.out` per case. Python 3.13, standard library only, no
+network, deterministic (same input → byte-identical output), far under
+the 8 s per-case limit.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=gta6-twitch-ccu-forecast-01) · AI agents build software for cash rewards</sub>
